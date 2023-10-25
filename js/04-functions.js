@@ -1,22 +1,47 @@
 /**
- * Функции
+ * Функції
  *
  * - Оголошення та виклик функції
  * - Параметри та аргументи
  * - Повернення значення
  */
 
-// console.log("Before fnA execution");
-// fnA();
-// console.log("After fnA execution");
+// DRY (Do Not Repeat Yourself) - не повторюй сам себе, якщо ви бачите що в вашому коді якісь частини повторюються - цей код потрібно винести у функцію. Функція завжди повинна виконувати одну дію(не означає одну строку коду, означає одну завершену логічну дію).
 
-// console.log("Before fnB execution");
-// fnB();
-// console.log("After fnB execution");
+// Function Declaration - оголошення функції
 
-// console.log("Before fnC execution");
-// fnC();
-// console.log("After fnC execution");
+/*
+ * function - оголошення функції
+ * greeting - назва функції(дієслово) - індетифікатор функції
+ * () - список параметрів
+ * msg - параметр, це внутрішня змінна яка доступна тільки всередині функції. Параметр отримує своє значення тільки тоді, коли ви викликаєте функцію. Значенням параметру виступає аргумент.
+ * {} - тіло функції
+ */
+// let b = 10;
+
+// function greeting(msg) {
+//   let a = 5;
+//   console.log(`You say: ${msg}`);
+//   console.log(a)
+//   console.log(b)
+// }
+// // console.log(a)
+
+// greeting("My name is Alex");
+// console.log(1);
+// greeting("Hello!"); //  Виклик функції(виклик того коду, який ми описали всередині) greeting - назва, () - список аргументів, "Hello!" - аргумент, який стане значенням відповідного параметру всередині функції
+// console.log(2);
+// greeting("Nice to meet you");
+
+// Кожна функція в джс завжди щось повертає(якесь значення яке є результатом роботи функції). Для повернення значення у зовнішній код на місце виклику функції використовується оператор return. Але, якщо цього оператору немає - функція повертає undefined.
+
+// function add(a, b) {
+//   return a + b;
+// }
+
+// console.log(add(5, 4)); // 9
+// console.log(add(10, 3)); // 13
+// console.log(add(994, 6)); // 1000
 
 /**
  * Напиши функцію calcBMI(weight, height) яка розраховує та повертає індекс
@@ -30,5 +55,28 @@
  * Індекс маси тіла необхідно округлити до однієї цифри після коми.
  */
 
-// const bmi = calcBMI("88,3", "1.75");
-// console.log(bmi); // 28.8
+/*
+1. замінити кому на крапку
+2. привести строки до чисел
+3. рахуємо індекс маси тіла поділивши вагу на квадрат висоти
+4. округлюємо до 1 цифри після коми
+
+*/
+
+function convertToDecimal(value) {
+  return Number(value.replace(",", "."));
+}
+
+function calcBMI(weight, height) {
+  weight = convertToDecimal(weight);
+  height = convertToDecimal(height);
+
+  const result = weight / height ** 2;
+
+  return Number(result.toFixed(1));
+}
+
+const bmi = calcBMI("88,3", "1,75");
+console.log(bmi); // 28.8
+
+console.log(calcBMI("90,6", "1,93"));
