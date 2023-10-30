@@ -1,22 +1,45 @@
 /*
- * Напиши скрипт проверки подписки пользователя при доступе к контенту
- * - Есть три типа подписки: free, pro и vip.
- * - Получить доступ могут только пользователи pro и vip
+Напиши скрипт перевірки підписки користувача при доступі до контенту.
+- Існують три типи підписки: free, pro і vip.
+- Доступ можуть отримати лише користувачі з підпискою pro і vip.
+
  */
 
-const sub = "free";
+// const sub = "vip";
+// // let canAccessContent = false;
+
+// // if (sub === "pro" || sub === "vip") {
+// //   canAccessContent = true;
+// // }
+
+// const canAccessContent = sub === "pro" || sub === "vip";
+
+// /*
+// 1.
+//     const sub = "free";
+//     const canAccessContent = false || false; -> false
+// 2.
+//     const sub = "pro";
+//     const canAccessContent = true || false; -> true
+// 3.
+//     const sub = "vip";
+//     const canAccessContent = false || true; -> true
+// */
+
+// console.log("Can user access content: ", canAccessContent);
 
 /*
- * Напиши скрипт который проверяет возможность открыть чат с пользователем.
- * Для этого пользователь должен быть:
- * - другом
- * - онлайн
- * - без режима не беспокоить
+Напиши скрипт, який перевіряє можливість відкриття чату з користувачем.
+Для цього користувач повинен бути:
+- другом
+- онлайн
+- без режиму "не турбувати"
+
  */
 
-const isOnline = true;
-const isFriend = true;
-const isDnd = true;
+// const isOnline = true;
+// const isFriend = true;
+// const isDnd = false;
 
-// const canOpenChat = ;
-// console.log("Можно открыть чат? ", canOpenChat);
+// const canOpenChat = isOnline && isFriend && !isDnd;
+// console.log("Can user open chat? ", canOpenChat);
