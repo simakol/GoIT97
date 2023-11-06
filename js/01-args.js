@@ -17,16 +17,7 @@ foo(1, 2, 3, 4, 5, 6, 7);
  * кількості аргументів (чисел)
  */
 
-const add = function (arguments) {
-  const args = Array.from(arguments);
-  let total = 0;
-
-  for (const arg of args) {
-    total += arg;
-  }
-
-  return total;
-};
+function add() {}
 
 console.log(add(1, 2, 3));
 console.log(add(1, 2, 4, 5, 6));
