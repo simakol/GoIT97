@@ -9,18 +9,22 @@
  * - Перевизначення
  */
 
-const courses = ["HTML", "CSS", "JavaScript", "React", "PostgreSQL"];
+const courses = ["HTML", "CSS", "JavaScript", "React", "PostgreSQL", "Next.js"];
 console.table(courses);
-console.log([0]);
-console.log([1]);
-console.log([2]);
-console.log([3]);
+console.log(courses[0]);
+console.log(courses[1]);
+console.log(courses[2]);
+console.log(courses[3]);
+console.log(courses[4]);
 
-courses[1] = "Jacob";
-courses[3] = "Adrian";
+courses[3] = "Angular.js";
+courses[4] = "MongoDB";
+
 console.table(courses);
 
-console.log(courses.length);
+console.log(`length: ${courses.length}`);
 
 const lastIndex = courses.length - 1;
 console.log(lastIndex);
+console.log(courses[lastIndex])
+console.log(courses[courses.length - 1])
