@@ -5,21 +5,32 @@
  * - Обчислювальні властивості
  */
 
-const username = "Mango";
-const email = "mango@mail.com";
+// const username = "Mango";
+// const email = "mango@mail.com";
 
-const credentials = {};
+// // const credentials = {
+// //     username: username,
+// //     email: email
+// // };
 
-console.log(credentials);
-console.log(credentials.username);
-console.log(credentials.email);
+// const credentials = {
+//   username,
+//   email,
+// };
+
+// console.log(credentials);
+// console.log(credentials.username);
+// console.log(credentials.email);
 
 /**
  * -------------------------
  */
 
-const inputName = "color";
+// const inputName = "color";
 
-const colorPickerData = {};
+// const colorPickerData = {
+//     // color: "red"
+//     [inputName]: "red"
+// };
 
-console.log(colorPickerData);
+// console.log(colorPickerData);

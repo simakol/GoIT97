@@ -6,25 +6,58 @@
  * - Метод Object.values
  */
 
-const feedback = {
-  good: 5,
-  neutral: 10,
-  bad: 3,
-};
+// const feedback = {
+//   good: 5,
+//   neutral: 10,
+//   bad: 3,
+// };
 
-let totalFeedback = 0;
+// let totalFeedback = 0;
+
+// for (const key in feedback) {
+//   // console.log(key);
+//   // console.log(feedback[key]);
+//   totalFeedback += feedback[key]
+// }
 
 // console.log("totalFeedback: ", totalFeedback);
+// const arr = ["Nazar", "Oleg", "Vika"];
+// for (const index in arr) {
+//   console.log(index);
+// }
+
+// for (const name of arr) {
+//   console.log(name);
+// }
 
 /**
  * ---------------------------------
  */
-const keys = feedback;
-console.log(keys);
+
+// const feedback = {
+//   good: 5,
+//   neutral: 10,
+//   bad: 3,
+// };
+
+// const keys = Object.keys(feedback);
+// console.log(keys);
+
+// let totalFeedback = 0;
+
+// for (const key of keys) {
+//   console.log(key)
+//   totalFeedback += feedback[key]
+// }
 
 // console.log("totalFeedback: ", totalFeedback);
 
-const values = feedback;
-console.log(values);
+// const values = Object.values(feedback);
+// console.log(values);
 
-// console.log('totalFeedback: ', totalFeedback);
+// for (const value of values) {
+//   console.log(value)
+//   totalFeedback += value;
+// }
+
+// console.log("totalFeedback: ", totalFeedback);
