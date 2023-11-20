@@ -2,7 +2,7 @@
  * Array.prototype.map()
  * - Поелементо перебирає оригінальний масив
  * - Не змінює оригінальний масив
- * - Повертає новий масив такої ж довжини
+ * - Повертає новий масив такої ж довжини + кожен елемент нового масиву буде змінений за умовою колбек функції
  */
 
 const allCars = [
@@ -22,19 +22,36 @@ const allCars = [
  * Нехай функція getModels повертає масив моделей (поле model) всіх автомобілів.
  */
 
-const getModels = (cars) => {};
+// const getModels = (cars) => {
+//   return cars.map((car) => car.model);
 
-console.table(getModels(allCars));
+//   // const newArr = [];
+
+//   // for (const car of cars) {
+//   //   newArr.push(car.model);
+//   // }
+
+//   // return newArr;
+// };
+
+// console.table(getModels(allCars));
 
 /**
  * Нехай функція makeCarsWithDiscount повертає новий масив об'єктів із змінним
  * значенням властивості price залежно від переданої знижки.
  */
 
-const makeCarsWithDiscount = (cars, discount) => {};
+// const makeCarsWithDiscount = (cars, discount) => {
+//   return cars.map((car) => ({ ...car, price: car.price * (1 - discount) }));
+//   // const newArr = [];
+//   // for (const car of cars) {
+//   //   newArr.push({ ...car, price: car.price * (1 - discount) });
+//   // }
+//   // return newArr;
+// };
 
-console.table(makeCarsWithDiscount(allCars, 0.2));
-console.table(makeCarsWithDiscount(allCars, 0.4));
+// console.table(makeCarsWithDiscount(allCars, 0.2));
+// console.table(makeCarsWithDiscount(allCars, 0.4));
 
 const players = [
   { id: "player-1", name: "Mango", timePlayed: 310, points: 54, online: false },
@@ -51,6 +68,40 @@ console.table(players);
 
 const playerIdToUpdate = "player-3";
 
-const updatedPlayers = players.map((player) => {});
+const updatedPlayers = players.map((player) => {
+  if (playerIdToUpdate === player.id) {
+    return { ...player, timePlayed: player.timePlayed + 100 };
+  }
+  return player;
+});
 
 console.log(updatedPlayers);
+
+/*
+Чиста функція:
+
+- функція, яка не мутує дані(тобто, яка не змінює масиви і обʼєкти за посиланням, а навпаки робить їх копії)
+- фукнція, яка не звертається до зовнішніх індетифікаторів
+- функція, яка при однакових аргументах завжди буде повертати однаковий результат
+- функція, яка виконує одну дію
+
+*/
+
+function pureSum(a, b) {
+  return a + b;
+}
+
+console.log(pureSum(5, 2));
+console.log(pureSum(5, 2));
+console.log(pureSum(5, 2));
+console.log(pureSum(5, 2));
+
+let a = 5;
+
+function dirtySum(b) {
+  return a + b;
+}
+
+console.log(dirtySum(2));
+a = 10;
+console.log(dirtySum(2));

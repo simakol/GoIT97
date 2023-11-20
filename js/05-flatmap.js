@@ -10,5 +10,20 @@ const tweets = [
   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
 ];
 
-const tags = tweets;
+// const tags = tweets.map((tweet) => tweet.tags).flat();
+const tags = tweets.flatMap((tweet) => tweet.tags);
+
+// const uniqueTags = [...new Set(tags)];
 console.log(tags);
+// console.log(uniqueTags);
+
+// .flat(depth) - метод, який вміє діставати вкладеності за параметром depth, повертає новий масив, прибираючи глибину вкладеностей, яку ви передали
+
+// const arr = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+//   [[10], [11], [12]],
+// ];
+
+// console.log(arr.flat(2));
