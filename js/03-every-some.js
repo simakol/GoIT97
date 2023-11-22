@@ -7,22 +7,22 @@ const players = [
 ];
 
 /**
- * Метод every
+ * Метод every (&&)
  *
  * - Поелементно перебирає оригінальний масив
  * - Повертає true якщо всі елементи масиву задовольняють умову
  */
-const isAllOnline = players;
-// console.log('isAllOnline: ', isAllOnline);
+const isAllOnline = players.every((player) => player.online);
+console.log("isAllOnline: ", isAllOnline);
 
 /**
- * Метод some
+ * Метод some (||)
  *
  * - Поелементно перебирає оригінальний масив
  * - Повертає true якщо хоча б один елемент масиву задовольняє умову
  */
-const isAnyOnline = players;
+const isAnyOnline = players.some((player) => player.online);
 console.log("isAnyOnline: ", isAnyOnline);
 
-const anyHardcorePlayers = players;
+const anyHardcorePlayers = players.some((player) => player.timePlayed > 400);
 console.log("anyHardcorePlayers: ", anyHardcorePlayers);
