@@ -6,81 +6,103 @@
  * - Контекст методу об'єкта
  */
 
+/*
+1. this - це ключево слово яке зберегіє в собі посилання на тей обʼєкт, який викликав функцію(обʼєкт зліва до крапки). Тому для того, щоб зрозуміти на що послається this потрібно дивитись не на місце опису функції, а на місце та тип її виклику(крім стрілочних)!
+
+2. Якщо функція викликається без контексту (тобто, немає того обʼєкту, який її викликає), то у звичайному режимі this буде посилатися на глобальний обʼєкт window, а у суворому(use strict) буде udefined.
+
+3. У стрілкових фукціяї немає власного this, вони беруть його у батька (це місце де функція була створена). Тому використання this у стрілкових фукціях абсолютно непотрібне, тому що стрілкова функція запамʼятає цей this на все життя програми і змінити його буде неможливо!
+
+4. this отримує своє значення ТІЛЬКИ під час виклику, якщо ж ми фукнцію не викликаємо(наприклад, якщо ми передаємо її в якості колбеку) то значення this втрачається(на справді воно навіть не записується) 
+
+foo() // виклик функції без контексту, this = (window/undefined)
+
+obj.foo() // виклик фукнції з контекстом this = obj
+
+foo.call(obj2) // виклик функції з контекстом this = obj2
+
+*/
+
 /**
  * Глобальний контекст
  */
-function foo() {
-  console.log("foo -> this", this);
-}
+// function foo() {
+//   console.log("foo -> this", this);
+// }
 
-foo();
+// foo(); // цю функцію ніхто не викликає див п.2
 
 /**
  * Контекст методу об'єкта
  */
 
-const user = {
-  tag: "Mango",
-  showTag() {
-    console.log("showTag -> this", this);
-  },
-};
+// const user = {
+//   tag: "Mango",
+//   showTag() {
+//     console.log("showTag -> this", this);
+//   },
+// };
 
-user.showTag();
+// user.showTag(); // цей метод викликається обʼєктом див п.1
 
 /**
  * Контекст методу об'єкта, але оголошена як зовнішня функція.
  */
 
-function showTag() {
-  console.log("showTag -> this", this);
-  console.log("showTag -> this.tag", this.tag);
-}
+// showTag(); // функцію ніхто не викликає, див п.2
 
-showTag();
+// функція showTag може змінювати контекст виклику (this) в залежності від того як ви її викликали. Наприклад, в цьому варіанті у обʼєкту mango створюється ключ showUserTag, значенням цього ключа буде посилання на фукнцію showTag. Тому, коли ми викликаємо mango.showUserTag(); на справді викликається функція showTag і this'ом всередині цієї фукнції буде як раз таки тей обʼєкт, який її викликав, а це обʼєкт mango
 
-const mango = {
-  tag: "Mango",
-};
+// function showTag() {
+//   console.log("showTag -> this", this);
+//   console.log("showTag -> this.tag", this.tag);
+// }
 
-mango.showUserTag = showTag;
-console.log("mango", mango);
+// const mango = {
+//   tag: "Mango",
+// };
 
-mango.showUserTag();
+// mango.showUserTag = showTag;
+// console.log("mango", mango);
+
+// mango.showUserTag();
 
 /**
  * Виклик без контексту, але оголошена як метод об'єкта.
  */
 
-const poly = {
-  tag: "Poly",
-  showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
-  },
-};
+// const poly = {
+//   tag: "Poly",
+//   showTag() {
+//     console.log("showTag -> this", this);
+//     console.log("showTag -> this.tag", this.tag);
+//   },
+// };
 
-poly.showTag();
+// poly.showTag();
 
-const outerShowTag = poly.showTag;
+// const outerShowTag = poly.showTag; // я зберігаю у константу outerShowTag посилання на метод showTag, але я не викликаю цей метод, відповідно, не дивлячись на те що зліва стоїть обʼєкт(poly.) this не буде розраховано, тому що фукнція не викликалась див п.4
 
-outerShowTag();
+// outerShowTag();
 
 /**
  * Контекст у callback-функціях
  */
 
-const jacob = {
-  tag: "Jacob",
-  showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
-  },
-};
 
-function invokeAction(action) {
-  console.log(action);
-  action();
-}
+// const jacob = {
+//   tag: "Jacob",
+//   showTag() {
+//     // метод, який являється колбек фукнцією (тому що нижче ми його передамо як аргумент)
+//     console.log("showTag -> this", this);
+//     console.log("showTag -> this.tag", this.tag);
+//   },
+// };
 
-invokeAction(jacob.showTag);
+// // invokeAction - функція вищого порядку
+// function invokeAction(action) {
+//   console.log(action);
+//   action(); // викликаємо колбек фукнцію showTag без контексту, тому що він втратився під час передачі цієї фукнції як колбеку, відповідно this = undefined
+// }
+
+// invokeAction(jacob.showTag);
