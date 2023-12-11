@@ -15,3 +15,15 @@ const colorPickerContainerEl = document.querySelector('.js-color-picker');
 /*
  * Пишемо функцію для створення розмітки колорпікера
  */
+
+const buttonsArr = options.map(({ label, color }) => {
+  const buttonEl = document.createElement('button');
+  buttonEl.textContent = label;
+  buttonEl.classList.add('color-picker__option');
+  buttonEl.style.backgroundColor = color;
+  return buttonEl;
+});
+
+console.log(buttonsArr);
+
+colorPickerContainerEl.append(...buttonsArr)
