@@ -44,3 +44,42 @@ const products = [
 ];
 
 const container = document.querySelector(".products");
+container.innerHTML = createMarkup(products);
+
+container.addEventListener("click", handleProductClick);
+
+function handleProductClick(event) {
+  if (event.target === event.currentTarget) {
+    // виходимо з обробки події, якщо ми клікнули на контейнер карточок
+    return;
+  }
+
+  const liEl = event.target.closest(".product-item"); // знаходимо посилання на найближчий батьківський елемент з таким селектором
+  const productId = Number(liEl.dataset.id);
+  const product = products.find(({ id }) => id === productId); // знаходимо потрібний нам обʼєкт з масиву для подальшого взяття інформації для модального вікна
+
+  const instance = basicLightbox.create(`
+  <div class="modal">
+    <img  src="${product.img}" alt="${product.name}">
+    <h2>${product.name}</h2>
+    <p>Ціна: ${product.price} грн</p>
+    <p>${product.description}</p>
+  </div>
+`);
+
+  instance.show();
+}
+
+function createMarkup(arr) {
+  return arr
+    .map(
+      ({ id, img, name, price }) => `
+  <li data-id="${id}" class="item product-item">
+    <img  src="${img}" alt="${name}">
+    <h2>${name}</h2>
+    <p>Ціна: ${price} грн</p>
+  </li>
+  `
+    )
+    .join("");
+}
