@@ -5,36 +5,44 @@
  * Використовуємо сервіс https://mockapi.io/ для бекенду
  */
 
+//https://65a8136794c2c5762da83d99.mockapi.io/
+
+axios.defaults.baseURL = "https://65a8136794c2c5762da83d99.mockapi.io";
+
 /**
  * Read (GET)
  */
 
 function fetchBooks() {
-  return fetch("/books").then((res) => res.json());
+  return axios.get("books").then(({ data }) => data);
+  // return fetch("/books").then((res) => res.json());
 }
 
 function fetchBookById(bookId) {
-  return fetch(`/books/${bookId}`).then((res) => res.json());
+  // return fetch(`/books/${bookId}`).then((res) => res.json());
+  return axios.get(`books/${bookId}`).then(({ data }) => data);
 }
 
-fetchBooks();
-fetchBookById(2);
-fetchBookById(4);
+fetchBooks().then(console.log);
+fetchBookById(2).then(console.log);
+fetchBookById(4).then(console.log);
 
 /**
  * Create (POST)
  */
 
 function addBook(book) {
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(book),
-  };
+  // const options = {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(book),
+  // };
 
-  return fetch(`${BASE_URL}/books`, options).then((res) => res.json());
+  // return fetch(`${BASE_URL}/books`, options).then((res) => res.json());
+
+  return axios.post("books", book).then(({ data }) => data);
 }
 
 addBook({
@@ -64,32 +72,42 @@ addBook({
  */
 
 function updateBookById(update, bookId) {
-  const options = {
-    метод: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(update),
-  };
+  // const options = {
+  //   метод: "PUT",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(update),
+  // };
 
-  return fetch(`/books/${bookId}`, options).then((res) => res.json());
+  // return fetch(`/books/${bookId}`, options).then((res) => res.json());
+
+  return axios.put(`books/${bookId}`, update).then(({ data }) => data);
 }
 
-// updateBookById({ title: "Велика нова книга по NODEJS" }, 19);
-// updateBookById({ rating: 1 }, 18);
-// updateBookById({ rating: 4, author: "Манго" }, 17);
+updateBookById({ title: "Велика нова книга по NODEJS" }, 19);
+updateBookById({ rating: 1 }, 18);
+updateBookById({ rating: 4, author: "Манго" }, 17);
 
 /**
  * Delete (DELETE)
  */
 
 function removeBook(bookId) {
-  const options = {
-    method: "DELETE",
-  };
+  // const options = {
+  //   method: "DELETE",
+  // };
 
-  return fetch(`/books/${bookId}`, options).then((res) => res.json());
+  // return fetch(`/books/${bookId}`, options).then((res) => res.json());
+
+  return axios.delete(`books/${bookId}`);
 }
 
-// removeBook(15);
-// removeBook(14);
+removeBook(20).then(({ data }) => {
+  console.log(data);
+  console.log("Успішно видалено");
+});
+removeBook(21).then(({ data }) => {
+  console.log(data);
+  console.log("Успішно видалено");
+});
