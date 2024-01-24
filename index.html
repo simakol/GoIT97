@@ -36,12 +36,13 @@
     <!-- Кнопка завантажити ще -->
     <button
       type="button"
-      class="btn btn-primary button"
+      class="btn btn-primary button is-hidden"
       data-action="load-more"
     >
       <!-- Спінер -->
       <span
         class="spinner-border spinner-border-sm spinner is-hidden"
+        id="preloader"
         role="status"
         aria-hidden="true"
       ></span>
@@ -49,6 +50,7 @@
       <span class="label">Показати ще</span>
     </button>
 
-    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js" type="module"></script>
   </body>
 </html>
